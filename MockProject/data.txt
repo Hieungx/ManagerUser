@@ -1,0 +1,103 @@
+/* 1 */
+{
+    "_id" : ObjectId("6008dde10a7fc63d88b7cac0"),
+    "name" : "Nguyen Thanh Chien",
+    "skill" : [ 
+        {
+            "language" : "Java",
+            "level" : 3,
+            "expYear" : 1
+        }, 
+        {
+            "language" : "C#",
+            "level" : 3,
+            "expYear" : 2
+        }, 
+        {
+            "language" : "C",
+            "level" : 3,
+            "expYear" : 3
+        }
+    ],
+    "email" : "maccams13",
+    "password" : "123456",
+    "_class" : "com.example.demo.enity.User"
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("6008de4d0a7fc63d88b7cac2"),
+    "name" : "Dao Thanh Dat",
+    "skill" : [ 
+        {
+            "language" : "Java",
+            "level" : 3,
+            "expYear" : 0
+        }, 
+        {
+            "language" : "C#",
+            "level" : 1,
+            "expYear" : 0
+        }, 
+        {
+            "language" : "C",
+            "level" : 3,
+            "expYear" : 2
+        }
+    ],
+    "email" : "maccams13",
+    "password" : "123456",
+    "_class" : "com.example.demo.enity.User"
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("600901ff215dcc479a96910a"),
+    "name" : "Nguyen Thanh Chien",
+    "skill" : [ 
+        {
+            "language" : "Java",
+            "level" : 3.0,
+            "expYear" : 1.0
+        }, 
+        {
+            "language" : "C#",
+            "level" : 3.0,
+            "expYear" : 2.0
+        }, 
+        {
+            "language" : "C",
+            "level" : 3.0,
+            "expYear" : 3.0
+        }
+    ],
+    "email" : "maccams13",
+    "password" : "123456",
+    "_class" : "com.example.demo.enity.User"
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("6009021c215dcc479a96910b"),
+    "name" : "Nguyen Thanh nam",
+    "skill" : [ 
+        {
+            "language" : "Java",
+            "level" : 2,
+            "expYear" : 3
+        }, 
+        {
+            "language" : "C#",
+            "level" : 0,
+            "expYear" : 2
+        }, 
+        {
+            "language" : "C",
+            "level" : 1,
+            "expYear" : 3
+        }
+    ],
+    "email" : "maccams13",
+    "password" : "123456",
+    "_class" : "com.example.demo.enity.User"
+}
