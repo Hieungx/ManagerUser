@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -27,14 +28,18 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-//                .antMatchers("/user").hasAnyAuthority("admin")
-//                .antMatchers("/api/v1/departments").hasAnyAuthority("admin", "Manager")
-//                .antMatchers("/login").permitAll()
+                .antMatchers("/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic()
                 .and()
-                .csrf().disable();
+                .csrf().disable()
+                .addFilterBefore(
+                        new JWTAuthenticationFilter("/login",authenticationManager()),
+                        UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(
+                        new JWTAuthorizationFilter(),
+                        UsernamePasswordAuthenticationFilter.class);
     }
 
 }
