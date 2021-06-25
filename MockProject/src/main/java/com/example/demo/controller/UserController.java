@@ -18,7 +18,6 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/user")
-@PreAuthorize("hasAnyAuthority('admin')")
 public class UserController {
 
     @Resource
@@ -32,7 +31,7 @@ public class UserController {
         UserDTO userDTO = userService.getByUsername(username);
         return ResponseEntity.ok(userDTO);
     }
-
+    @PreAuthorize("hasAnyAuthority('admin')")
     @GetMapping("/get-all-user")
     public ResponseEntity<ListResponseDTO> getAll(@RequestParam(required = false, defaultValue = "1") int page,
                                                   @RequestParam(required = false, defaultValue = "10") int size) {
@@ -50,7 +49,7 @@ public class UserController {
         CreateOrUpdateResponseDTO response = userService.createUser(userDTO);
         return ResponseEntity.ok(response);
     }
-
+    @PreAuthorize("hasAnyAuthority('admin','employee')")
     @PutMapping("/edit-user")
     public ResponseEntity<CreateOrUpdateResponseDTO> editUser(@RequestBody UserDTO userDTO) {
         CreateOrUpdateResponseDTO response = userService.editUser(userDTO);

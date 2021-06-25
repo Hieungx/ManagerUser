@@ -25,6 +25,8 @@ public class User {
     private String name;
     @Field("skill")
     private List<Skill> skills;
+    @Field("age")
+    private int age;
     @Field("email")
     private String email;
     @Field("password")

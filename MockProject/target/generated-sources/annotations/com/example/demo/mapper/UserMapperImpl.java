@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-06-24T11:35:33+0700",
+    date = "2021-06-24T15:48:00+0700",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.11 (Amazon.com Inc.)"
 )
 @Component
@@ -35,6 +35,7 @@ public class UserMapperImpl extends UserMapper {
         if ( list != null ) {
             user.setSkills( new ArrayList<Skill>( list ) );
         }
+        user.setAge( dto.getAge() );
         user.setEmail( dto.getEmail() );
         user.setPassword( dto.getPassword() );
 
@@ -58,6 +59,7 @@ public class UserMapperImpl extends UserMapper {
         }
         userDTO.setEmail( entity.getEmail() );
         userDTO.setPassword( entity.getPassword() );
+        userDTO.setAge( entity.getAge() );
 
         return userDTO;
     }

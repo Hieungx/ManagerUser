@@ -26,5 +26,7 @@ public class UserDTO {
     private String email;
     @JsonProperty("password")
     private String password;
+    @JsonProperty("age")
+    private int age;
 
 }
