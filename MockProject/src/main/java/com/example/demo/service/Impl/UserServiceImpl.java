@@ -38,12 +38,12 @@ public class UserServiceImpl implements UserService {
 //        return userMapper.toListDTO(users);
 //    }
     @Override
-    public ListResponseDTO<UserDTO> getListUser(int page, int size) {
+    public ListResponseDTO<UserDTO> getListUser() {
         List<User> users = userRepository.findAll();
-        long totalElement = users.size();
-        PageDTO pageDTO = PageUtils.caculatePage(size, page, totalElement);
+//        long totalElement = users.size();
+//        PageDTO pageDTO = PageUtils.caculatePage(totalElement);
         List<UserDTO> userDTOS = userMapper.toListDTO(users);
-        return new ListResponseDTO<>(userDTOS, pageDTO);
+        return new ListResponseDTO<>(userDTOS);
     }
 
     @Override

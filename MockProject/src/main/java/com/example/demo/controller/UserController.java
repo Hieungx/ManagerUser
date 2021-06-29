@@ -33,14 +33,13 @@ public class UserController {
     }
     @PreAuthorize("hasAnyAuthority('admin')")
     @GetMapping("/get-all-user")
-    public ResponseEntity<ListResponseDTO> getAll(@RequestParam(required = false, defaultValue = "1") int page,
-                                                  @RequestParam(required = false, defaultValue = "10") int size) {
+    public ResponseEntity<ListResponseDTO> getAll() {
         //SecuConTextHold đang giữ tất cả config người dùng vừa đâng nhập vào
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); //chứa các thông tin đăng nhập
 //        if (!(authentication instanceof AnonymousAuthenticationToken)) {
 //            System.out.println(authentication.getName());
 //        }
-        ListResponseDTO<UserDTO> list = userService.getListUser(page, size);
+        ListResponseDTO<UserDTO> list = userService.getListUser();
         return ResponseEntity.ok(list);
     }
 

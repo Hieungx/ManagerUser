@@ -6,11 +6,9 @@ import com.example.demo.dto.response.CreateOrUpdateResponseDTO;
 import com.example.demo.dto.response.ListResponseDTO;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import java.util.List;
-
 public interface UserService extends UserDetailsService {
 
-    ListResponseDTO<UserDTO> getListUser(int page, int size);
+    ListResponseDTO<UserDTO> getListUser();
 
     CreateOrUpdateResponseDTO createUser(UserDTO userDTO);
 
