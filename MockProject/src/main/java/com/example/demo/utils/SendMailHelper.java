@@ -1,7 +1,9 @@
-package com.example.demo;
+package com.example.demo.utils;
 
+import lombok.SneakyThrows;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,19 +19,19 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-public class DemoSendAttachment {
+@Component
+public class SendMailHelper {
+    String to = "hieuu99@gmail.com";
 
+    // Add sender
+    String from = "hvt311097@gmail.com";
+    final String username = "hvt311097@gmail.com";//your Gmail username
+    final String password = "truong311097";//your Gmail password
 
-    public static void main(String[] args) throws MessagingException, IOException {
-        String to = "hieuu99@gmail.com";
+    String host = "smtp.gmail.com";
 
-        // Add sender
-        String from = "hvt311097@gmail.com";
-        final String username = "hvt311097@gmail.com";//your Gmail username
-        final String password = "truong311097";//your Gmail password
-
-        String host = "smtp.gmail.com";
-
+    @SneakyThrows
+    public void sendEmail() {
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
@@ -72,5 +74,5 @@ public class DemoSendAttachment {
         msg.setSentDate(new java.util.Date());
         Transport.send(msg);
     }
-
 }
+
