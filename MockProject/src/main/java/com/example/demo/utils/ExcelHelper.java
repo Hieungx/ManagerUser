@@ -1,33 +1,31 @@
 package com.example.demo.utils;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import com.example.demo.constant.Constant;
 import com.example.demo.dto.ExportUserDTO;
-import com.example.demo.dto.UserDTO;
-import com.example.demo.entity.Book;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
-import org.apache.poi.ss.util.CellReference;
-import org.apache.poi.xssf.streaming.*;
 import org.apache.poi.xssf.usermodel.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.ResourceUtils;
+import org.springframework.util.StringUtils;
 
 @Component
 public class ExcelHelper {
-    private String PATH_TO_TEMPLATE_EXCEL = "C:/Users/nthieu10/Desktop/Excel";
+    private String PATH_TO_TEMPLATE_EXCEL = "D:\\MyProject\\MockProject\\src\\main\\resources\\excel\\";
+    private String PATH_TO_STORE_EXCEL = "C:\\Users\\nthieu10\\Desktop\\Excel";
+    private String FILE_NAME = "D:\\MyProject\\MockProject\\src\\main\\resources\\excel\\";
 
     public ByteArrayInputStream exportListUser(List<ExportUserDTO> input) throws Exception {
-        File file = ResourceUtils.getFile(PATH_TO_TEMPLATE_EXCEL + "User.xlsx");
-        String fileName = PATH_TO_TEMPLATE_EXCEL + "User.xlsx";
+
+        File file = ResourceUtils.getFile(PATH_TO_TEMPLATE_EXCEL + "UserTemplate.xlsx");
+        String fileName = FILE_NAME + "User.xlsx";
         File outputFile = new File(fileName);
         copyFile(file, outputFile);
         FileInputStream inputStream = new FileInputStream(outputFile);
@@ -96,8 +94,8 @@ public class ExcelHelper {
         titleCellStyle.setFont(fontHeader);
         titleCellStyle.setWrapText(true);
 
-        CellRangeAddress cellAddresses = new CellRangeAddress(0, 0, 0, startDateCell);
-        newSheet.addMergedRegion(cellAddresses);
+//        CellRangeAddress cellAddresses = new CellRangeAddress(0, 0, 0, startDateCell);
+//        newSheet.addMergedRegion(cellAddresses);
 
         if (!CollectionUtils.isEmpty(input)) {
             for (int i = 0; i < input.size(); i++) {
@@ -106,25 +104,25 @@ public class ExcelHelper {
                 //No.
                 setCellValue(i + 2, j++, newSheet, i + 1, cellRowStyle);
                 //UserName
-                if (!ObjectUtils.isEmpty(dto.getUserName())) {
+                if (!StringUtils.isEmpty(dto.getUserName())) {
                     setCellValue(i + 2, j++, newSheet,dto.getUserName(), cellRowStyle);
                 } else {
                     setCellValue(i + 2, j++, newSheet, Constant.ExportConstant.BLANK, cellRowStyle);
                 }
                 //FullName
-                if (!ObjectUtils.isEmpty(dto.getName())) {
+                if (!StringUtils.isEmpty(dto.getName())) {
                     setCellValue(i + 2, j++, newSheet,dto.getName(), cellRowStyle);
                 } else {
                     setCellValue(i + 2, j++, newSheet, Constant.ExportConstant.BLANK, cellRowStyle);
                 }
                 //Email
-                if (!ObjectUtils.isEmpty(dto.getEmail())) {
+                if (!StringUtils.isEmpty(dto.getEmail())) {
                     setCellValue(i + 2, j++, newSheet,dto.getEmail(), cellRowStyle);
                 } else {
                     setCellValue(i + 2, j++, newSheet, Constant.ExportConstant.BLANK, cellRowStyle);
                 }
                 //Age
-                if (!ObjectUtils.isEmpty(dto.getAge())) {
+                if (!StringUtils.isEmpty(dto.getAge())) {
                     setCellValue(i + 2, j++, newSheet,dto.getAge(), cellRowStyle);
                 } else {
                     setCellValue(i + 2, j++, newSheet, Constant.ExportConstant.BLANK, cellRowStyle);
