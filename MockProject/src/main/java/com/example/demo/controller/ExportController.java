@@ -46,6 +46,7 @@ public class ExportController {
     @Autowired
     UserService userService;
 
+    // Export theo hệ thống HRMS đang còn lỗi
     @SneakyThrows
     @GetMapping("/user")
     public ResponseEntity<Resource> exportListUser() {
@@ -65,6 +66,7 @@ public class ExportController {
         }
     }
 
+    // Export thành công
     @SneakyThrows
     @GetMapping("/my-export-users")
     public void exportToExcel(HttpServletResponse response) {
@@ -84,5 +86,4 @@ public class ExportController {
         UserExcelExporter excelExporter = new UserExcelExporter(listUser);
         excelExporter.export(response);
     }
-
 }
