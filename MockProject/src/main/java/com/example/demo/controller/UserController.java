@@ -7,6 +7,7 @@ import com.example.demo.dto.response.CreateOrUpdateResponseDTO;
 import com.example.demo.dto.response.ListResponseDTO;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
+import org.apache.xmlbeans.impl.xb.xsdschema.ListDocument;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -33,15 +35,14 @@ public class UserController {
     }
     @PreAuthorize("hasAnyAuthority('admin')")
     @GetMapping("/get-all-user")
-    public ResponseEntity<ListResponseDTO> getAll(@RequestParam(required = false, defaultValue = "1") int page,
-                                                  @RequestParam(required = false, defaultValue = "10") int size) {
+    public ResponseEntity<List<UserDTO>> getAll() {
         //SecuConTextHold đang giữ tất cả config người dùng vừa đâng nhập vào
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); //chứa các thông tin đăng nhập
 //        if (!(authentication instanceof AnonymousAuthenticationToken)) {
 //            System.out.println(authentication.getName());
 //        }
-        ListResponseDTO<UserDTO> list = userService.getListUser(page, size);
-        return ResponseEntity.ok(list);
+        List<UserDTO> list = userService.getListUser();
+        return  ResponseEntity.ok(list);
     }
 
     @PostMapping("/create-user")

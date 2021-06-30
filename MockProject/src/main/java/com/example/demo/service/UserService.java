@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface UserService extends UserDetailsService {
 
-    ListResponseDTO<UserDTO> getListUser(int page, int size);
+    List<UserDTO> getListUser();
 
     CreateOrUpdateResponseDTO createUser(UserDTO userDTO);
 
