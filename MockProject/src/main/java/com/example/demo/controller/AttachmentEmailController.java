@@ -47,7 +47,7 @@ public class AttachmentEmailController {
 
         //Attachment1
         FileSystemResource file1 = new FileSystemResource(new File(path2));
-        helper.addAttachment("List User",file1);
+        helper.addAttachment("List_User.xlsx",file1);
 
         mailSender.send(message);
 

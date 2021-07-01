@@ -1,5 +1,6 @@
 package com.example.demo.utils;
 
+import com.example.demo.mail.MyConstants;
 import lombok.SneakyThrows;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -21,12 +22,12 @@ import javax.mail.internet.MimeMultipart;
 
 @Component
 public class SendMailHelper {
-    String to = "hieuu99@gmail.com";
-
-    // Add sender
-    String from = "hvt311097@gmail.com";
-    final String username = "hvt311097@gmail.com";//your Gmail username
-    final String password = "truong311097";//your Gmail password
+//    String to = "hieuu99@gmail.com";
+//
+//    // Add sender
+//    String from = "hvt311097@gmail.com";
+//    final String username = "hvt311097@gmail.com";//your Gmail username
+//    final String password = "truong311097";//your Gmail password
 
     String host = "smtp.gmail.com";
 
@@ -42,19 +43,19 @@ public class SendMailHelper {
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
+                        return new PasswordAuthentication(MyConstants.MY_EMAIL, MyConstants.MY_PASSWORD);
                     }
                 });
 
         //Create a new message
         MimeMessage msg = new MimeMessage(session);
         //Set from address
-        msg.setFrom(new InternetAddress(from));
+        msg.setFrom(new InternetAddress(MyConstants.MY_EMAIL));
         //Setting the "to recipients"
-        msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to, false));
-        msg.setSubject("Send mail attach file");
+        msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(MyConstants.FRIEND_EMAIL, false));
+        msg.setSubject("Hiếu Siêu cấp vip pro");
         MimeBodyPart mbp1 = new MimeBodyPart();
-        mbp1.setText("Hello " + to);
+        mbp1.setText("Hello " + MyConstants.FRIEND_EMAIL);
         MimeBodyPart mbp2 = new MimeBodyPart();
         File temp = null;
         File temp1 = null;
